@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Email</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="{{url_for('static', filename='css/estilo.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h3>uma seleção de produtos</h3>
+            <h1>Especial para Você</h1>
+            <p>Todos os produtos desta lista foram selecionados a partir da sua navegação. Aproveite!</p>
+        </div>
+    </header>
+    <article>
+        <section class='container'>
+                <h3>Olá, Fulano</h3>
+                <p>Fizemos uma lista especial de produtos apenas para você. Isso mesmo: nesta lista temos só produtos que você pode gostar. Seu amigo Ciclano lhe recomendou essa lista especial. Olha só:</p>
+        </section>
+        <section class="container">
+            <section id="produtos">
+                {% for produto in lista_produtos %}
+                <div class="card">
+                    <div class="img-produto">
+                        <img src='https:{{produto.get_imagem()}}' alt="">
+                    </div>
+                    <p>{{produto.get_nome()}}</p>
+                    <p>{{produto.get_descricao()}}.</p>
+                    <p>De: R${{produto.get_preco_antes()}}</p>
+                    <p>Por: R${{produto.get_preco()}}</p>
+                    <p>ou {{produto.get_parcela()}}x de R${{produto.get_valor_parcela()}}</p>
+                    <button type="submit" class="btComprar">Comprar</button>
+                </div>
+                {% endfor %}
+            </section>
+            <section class="d-flex-center">
+                <button>Tem muito mais aqui. Vem ver!</button>
+            </section>
+        </section>
+    </article>
+    <footer>
+        <div class="corte"></div>
+        <section class="sec-email">
+        </section>
+    </footer>
+</body>
+</html>
